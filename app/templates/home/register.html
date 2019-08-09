@@ -1,0 +1,60 @@
+{% extends "home/home.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-plus"></span>&nbsp;会员注册</h3>
+                </div>
+                <div class="panel-body">
+
+                    {% for msg in get_flashed_messages(category_filter=["err"]) %}
+                    <p class="login-box-msg" style="color:red">{{ msg }}</p>
+                    {% endfor %}
+                    {% for msg in get_flashed_messages(category_filter=["ok"]) %}
+                    <p class="login-box-msg" style="color:red">{{ msg }}</p>
+                    {% endfor %}
+
+                    <form role="form" method="post">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="input_name"><span class="glyphicon glyphicon-user"></span>{{form.name.label}}</label>
+                                {{form.name}}
+                                {% for err in form.name.errors %}
+                                <div class="col-md-12" id="error_name" style="color:red">
+                                    {{ err }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="form-group">
+                                <label for="input_password"><span class="glyphicon glyphicon-lock"></span>{{form.pwd.label}}</label>
+                                {{form.pwd}}
+                                {% for err in form.pwd.errors %}
+                                <div class="col-md-12" id="error_password" style="color:red">
+                                    {{ err }}
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="input_repassword"><span class="glyphicon glyphicon-lock"></span>{{form.repwd.label}}</label>
+                                {{form.repwd}}
+                                {% for err in form.repwd.errors %}
+                                <div class="col-md-12" id="error_repassword" style="color:red">
+                                    {{ err }}
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            {{ form.csrf_token }}
+                            {{ form.submit }}
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
