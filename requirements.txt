@@ -32,7 +32,7 @@ jieba==0.39
 Jinja2==2.10
 kombu==4.6.3
 lazy-object-proxy==1.4.1
-Mako==1.0.14
+Mako==1.2.2
 MarkupSafe==1.0
 mccabe==0.6.1
 more-itertools==7.1.0
